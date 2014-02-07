@@ -5,25 +5,32 @@
     id="org.apache.cordova.plugin"
     version="0.1.0">
 
-    <name>Echo</name>
-    <description>Cordova Echo Tutorial Plugin</description>
+    <name>MyScreenActiveReceiver<name>
+    <description>Cordova System Screen Active Event Listener</description>
     <author>Timo van der Schuit</author>
     <license></license>
-    <keywords>cordova,tutorial</keywords>
-    <repo>https://github.com/Timoteus78/cordova-echo.git</repo>
-   
-    <js-module src="www/echo.js" name="echo">
-        <clobbers target="tutorial.echo" />
-    </js-module>
+    <keywords>cordova,system,events,listener</keywords>
+    <repo>https://github.com/Timoteus78/cordova-system-events-listener.git</repo>
+
 
     <!-- android -->
     <platform name="android">
         <config-file target="res/xml/config.xml" parent="/*">
-            <feature name="Echo">
-                <param name="android-package" value="org.apache.cordova.plugin.Echo"/>
+            <feature name="MyScreenActiveReceiver">
+                <param name="android-package" value="org.apache.cordova.plugin.MyScreenActiveReceiver"/>
             </feature>   
+        </config-file>
+        <config-file target="AndroidManifest.xml" parent="/*">
+            <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+            <uses-permission android:name="android.intent.action.SCREEN_ON" />
+            
+            <receiver android:name="org.cordova.plugin.MyScreenActiveReceiver" >
+                <intent-filter>
+                    <action android:name="android.intent.action.SCREEN_ON" />
+                </intent-filter>
+            </receiver>
         </config-file>    
-        <source-file src="src/android/Echo.java" target-dir="src/org/apache/cordova/plugin" />
+        <source-file src="src/android/MyScreenActiveReceiver.java" target-dir="src/org/apache/cordova/plugin" />
     </platform>
 
 </plugin>
