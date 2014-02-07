@@ -5,7 +5,7 @@
     id="org.apache.cordova.plugin"
     version="0.1.0">
 
-    <name>MyScreenActiveReceiver<name>
+    <name>MyScreenActiveReceiver</name>
     <description>Cordova System Screen Active Event Listener</description>
     <author>Timo van der Schuit</author>
     <license></license>
